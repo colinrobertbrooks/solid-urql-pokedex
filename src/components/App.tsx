@@ -1,4 +1,5 @@
 import { For } from "solid-js";
+import { POKEMON_MODAL_ID } from "../constants";
 import { pokemons } from "../data";
 import Navigation from "./Navigation";
 import PokemonCard from "./PokemonCard";
@@ -11,6 +12,7 @@ const App = () => (
         <For each={pokemons}>{(pokemon) => <PokemonCard {...pokemon} />}</For>
       </div>
     </main>
+    <div id={POKEMON_MODAL_ID} />
   </>
 );
 
