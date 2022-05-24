@@ -3,12 +3,13 @@ import {
   createContext,
   createSignal,
   JSX,
+  Setter,
   useContext,
 } from "solid-js";
 
 type PokemonContextValue = {
   selectedPokemonId: Accessor<string | null>;
-  setSelectedPokemonId: (id: string | null) => null;
+  setSelectedPokemonId: Setter<string | null>;
 };
 
 const PokemonContext = createContext<PokemonContextValue>();

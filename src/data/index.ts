@@ -2,12 +2,5 @@
 import { Pokemon } from "../types";
 import data from "./pokemon-data";
 
+// TODO: remove this once pokemonList is being queried
 export const pokemonList: Pokemon[] = data;
-
-export const pokemonById: Map<string, Pokemon> = pokemonList.reduce(
-  (map, pokemon) => {
-    if (pokemon.id) map.set(pokemon.id, pokemon);
-    return map;
-  },
-  new Map()
-);

@@ -20,4 +20,5 @@ export type PokemonType =
   | "Dragon"
   | "Dark";
 
+// TODO: type this once data is removed
 export type Pokemon = typeof data[0];

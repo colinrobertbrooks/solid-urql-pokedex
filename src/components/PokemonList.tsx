@@ -1,18 +1,24 @@
 import { For } from "solid-js";
-import { Pokemon } from "../types";
+import { usePokemonContext } from "../contexts";
+import { pokemonList } from "../data";
 import PokemonCard from "./PokemonCard";
 
-type PokemonListProps = {
-  pokemonList: Pokemon[];
-  handleClick: (id: string) => void;
-};
+// TODO: query paginated list
+const PokemonList = () => {
+  const { setSelectedPokemonId } = usePokemonContext();
 
-const PokemonList = ({ pokemonList, handleClick }: PokemonListProps) => (
-  <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
-    <For each={pokemonList}>
-      {(pokemon) => <PokemonCard {...pokemon} handleClick={handleClick} />}
-    </For>
-  </div>
-);
+  return (
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+      <For each={pokemonList}>
+        {(pokemon) => (
+          <PokemonCard
+            {...pokemon}
+            handleClick={() => setSelectedPokemonId(pokemon.id)}
+          />
+        )}
+      </For>
+    </div>
+  );
+};
 
 export default PokemonList;

@@ -1,4 +1,6 @@
 // https://github.com/FormidableLabs/trygql/blob/main/graphql/basic-pokedex/data/pokemon-data.json
+
+// TODO: remove this once pokemonList is being queried
 const pokemons = [
   {
     id: "001",

@@ -14,7 +14,10 @@
     "vite-plugin-solid": "^2.2.6"
   },
   "dependencies": {
+    "@urql/core": "^2.4.4",
+    "graphql": "^15.8.0",
     "solid-js": "^1.4.2",
+    "solid-urql": "^0.2.0",
     "twind": "^0.16.17"
   }
 }
