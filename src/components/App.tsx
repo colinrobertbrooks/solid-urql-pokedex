@@ -1,19 +1,32 @@
-import { For } from "solid-js";
-import { POKEMON_MODAL_ID } from "../constants";
-import { pokemons } from "../data";
+import { Show } from "solid-js";
+import { usePokemonContext } from "../contexts";
+import { pokemonById, pokemonList } from "../data";
 import Navigation from "./Navigation";
-import PokemonCard from "./PokemonCard";
+import PokemonList from "./PokemonList";
+import PokemonModal from "./PokemonModal";
 
-const App = () => (
-  <>
-    <Navigation />
-    <main class="p-6">
-      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
-        <For each={pokemons}>{(pokemon) => <PokemonCard {...pokemon} />}</For>
-      </div>
-    </main>
-    <div id={POKEMON_MODAL_ID} />
-  </>
-);
+const App = () => {
+  const { selectedPokemonId, setSelectedPokemonId } = usePokemonContext();
+  const selectedPokemon = () =>
+    selectedPokemonId() ? pokemonById.get(selectedPokemonId()!) : null;
+
+  return (
+    <>
+      <Navigation />
+      <main class="p-6">
+        <PokemonList
+          pokemonList={pokemonList}
+          handleClick={(id) => setSelectedPokemonId(id)}
+        />
+      </main>
+      <Show when={selectedPokemonId()}>
+        <PokemonModal
+          {...selectedPokemon()!}
+          handleClose={() => setSelectedPokemonId(null)}
+        />
+      </Show>
+    </>
+  );
+};
 
 export default App;

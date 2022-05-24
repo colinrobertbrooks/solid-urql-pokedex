@@ -1,5 +1,5 @@
 // https://github.com/FormidableLabs/trygql/blob/main/graphql/basic-pokedex/data/pokemon-data.json
-export const pokemons = [
+const pokemons = [
   {
     id: "001",
     name: "Bulbasaur",
@@ -8798,3 +8798,5 @@ export const pokemons = [
     },
   },
 ];
+
+export default pokemons;

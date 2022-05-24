@@ -1,6 +1,6 @@
 # Pokédex
 
-Built with [Solid](https://solidjs.com) & [urql](https://formidable.com/open-source/urql/).
+A [Pokédex](https://www.pokemon.com/us/pokedex/) built with [Solid](https://solidjs.com) & [urql](https://formidable.com/open-source/urql/).
 
 ## Scripts
 

@@ -1,6 +1,6 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
 import "twind/shim";
-import App from "./components/App";
+import Root from "./components/Root";
 
-render(() => <App />, document.getElementById("root") as HTMLElement);
+render(() => <Root />, document.getElementById("root") as HTMLElement);
