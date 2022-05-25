@@ -1,9 +1,8 @@
-import { gql } from '@urql/core';
-import { Show } from 'solid-js';
-import { createQuery } from 'solid-urql';
-import Loader from '../../../components/Loader';
-import PokemonSprite from '../../../components/PokemonSprite';
-import { Link, useParams } from 'solid-app-router';
+import { Link, useParams } from "solid-app-router";
+import { Show } from "solid-js";
+import { createQuery, gql } from "solid-urql";
+import Loader from "../../../components/Loader";
+import PokemonSprite from "../../../components/PokemonSprite";
 
 // TODO: add fields
 const POKEMON_QUERY = gql`
@@ -37,7 +36,7 @@ const PokemonModal = () => {
         <div class="md:grid md:grid-cols-2 md:gap-3">
           <div class="p-8">
             <PokemonSprite
-              alt={fetchedResult()?.name || 'Pokémon'}
+              alt={fetchedResult()?.name || "Pokémon"}
               id={params.id}
             />
           </div>
