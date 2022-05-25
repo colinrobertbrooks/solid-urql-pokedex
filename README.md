@@ -1,4 +1,4 @@
-# Pokédex
+# [Pokédex](https://solid-urql-pokedex.netlify.app/)
 
 A [Pokédex](https://www.pokemon.com/us/pokedex/) built with [Solid](https://solidjs.com) & [urql](https://formidable.com/open-source/urql/).
 
@@ -34,8 +34,4 @@ Builds the app for production to the `dist` folder. It correctly bundles Solid i
 
 ### Deploy
 
-```bash
-# TODO
-```
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.).
+[Netlify CLI Manual deploys](https://docs.netlify.com/cli/get-started/#manual-deploys)
