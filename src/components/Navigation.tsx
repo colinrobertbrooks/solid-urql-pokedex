@@ -1,4 +1,3 @@
-// https://v1.tailwindcss.com/components/navigation
 const Navigation = () => (
   <nav class="flex items-center flex-wrap bg-white p-4 border-b shadow-md sticky top-0">
     <div class="flex items-center gap-3">
