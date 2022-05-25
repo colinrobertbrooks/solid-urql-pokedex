@@ -1,34 +1,24 @@
-import { createEffect, createSignal, For, Show } from "solid-js";
+import { For, Show } from "solid-js";
 import { createQuery, gql } from "solid-urql";
 import { Pokemon } from "../types";
 import Loader from "./Loader";
 import PokemonCard from "./PokemonCard";
 
-const PAGINATED_POKEMON_LIST_QUERY = gql`
-  query PaginatedPokemonList($limit: Int!, $skip: Int!) {
-    pokemons(limit: $limit, skip: $skip) {
+const POKEMON_LIST_QUERY = gql`
+  query PaginatedPokemonList {
+    pokemons {
       id
       name
     }
   }
 `;
 
-const TOTAL_POKEMONS = 151;
-
 const PokemonList = () => {
-  const [skip, setSkip] = createSignal(0);
   const [fetchedResult, fetchState] = createQuery<{
     pokemons: Pick<Pokemon, "id" | "name">[];
   }>({
-    query: PAGINATED_POKEMON_LIST_QUERY,
-    variables: {
-      limit: 24,
-      skip: skip(), // NOTE: query doesn't rerun when this changes
-    },
+    query: POKEMON_LIST_QUERY,
   });
-
-  // TEMP: for debugging
-  createEffect(() => console.log({ skip: skip() }));
 
   return (
     <Show
@@ -44,10 +34,6 @@ const PokemonList = () => {
           {(pokemon) => <PokemonCard {...pokemon} />}
         </For>
       </div>
-      <Show when={fetchedResult()!.pokemons.length < TOTAL_POKEMONS}>
-        {/* TODO: style me */}
-        <button onClick={() => setSkip((s) => s + 24)}>Load more</button>
-      </Show>
     </Show>
   );
 };
