@@ -1,7 +1,6 @@
-import { For } from 'solid-js';
-import { usePokemonContext } from '../contexts';
-import { pokemonList } from '../data';
-import PokemonCard from './PokemonCard';
+import { For } from "solid-js";
+import { pokemonList } from "../data";
+import PokemonCard from "./PokemonCard";
 
 // TODO: query paginated list
 const PokemonList = () => {
