@@ -2,6 +2,8 @@
 
 A [Pokédex](https://www.pokemon.com/us/pokedex/) built with [Solid](https://solidjs.com) & [urql](https://formidable.com/open-source/urql/).
 
+Uses Formidable's [Try GraphQL Basic Pokédex](https://trygql.formidable.dev/) to query data.
+
 ## Scripts
 
 ### Setup
