@@ -1,7 +1,36 @@
 /* @refresh reload */
-import { render } from "solid-js/web";
-import "twind/shim";
-import Root from "./components/Root";
-import "./index.css";
+import { render } from 'solid-js/web';
+import { Router, useRoutes } from 'solid-app-router';
+import {
+  createClient as createUrqlClient,
+  Provider as UrqlProvider,
+} from 'solid-urql';
 
-render(() => <Root />, document.getElementById("root") as HTMLElement);
+import pages from './utils/pages.js';
+
+import { setup } from 'twind/shim';
+import { config } from '../twind.config.js';
+
+setup(config);
+
+const urqlClient = createUrqlClient({
+  url: 'https://trygql.formidable.dev/graphql/basic-pokedex',
+});
+
+function App() {
+  const Routes = useRoutes(pages);
+  return (
+    <UrqlProvider value={urqlClient}>
+      <Routes />
+    </UrqlProvider>
+  );
+}
+
+render(
+  () => (
+    <Router>
+      <App />
+    </Router>
+  ),
+  document.getElementById('root')!
+);
