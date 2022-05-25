@@ -36,7 +36,8 @@ const PokemonModal = () => {
         <div class="md:grid md:grid-cols-2 md:gap-3">
           <div class="p-8">
             <PokemonSprite
-              alt={fetchedResult()?.name || "Pokémon"}
+              // NOTE: name isn't reactive here :-(
+              alt={fetchedResult()?.pokemon.name || "Pokémon"}
               id={params.id}
             />
           </div>
