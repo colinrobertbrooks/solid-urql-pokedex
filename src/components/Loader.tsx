@@ -1,8 +1,7 @@
 import { css, tw } from 'twind/css';
 
 type LoaderProps = {
-  fill?: string;
-  size?: number;
+  class?: string;
 };
 
 const styles = css`
@@ -159,9 +158,9 @@ const styles = css`
 `;
 
 // https://codepen.io/michito/pen/NrYPvP
-const Loader = ({ className }: LoaderProps) => {
+const Loader = (props: LoaderProps) => {
   return (
-    <div class={tw(className, styles)}>
+    <div class={tw(props.class, styles)}>
       <svg viewBox="0 0 330 331.7" xmlns="http://www.w3.org/2000/svg">
         <circle id="center" cx="165" cy="165.9" r="36.5" />
         <g id="bottom">

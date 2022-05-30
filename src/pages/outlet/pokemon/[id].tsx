@@ -4,6 +4,7 @@ import { createQuery, useClient } from '../../../utils/solid-urql';
 import PokemonSprite from '../../../components/PokemonSprite';
 import { Link, useParams } from 'solid-app-router';
 import { scrollLock } from '../../../utils/scrollLock';
+import Loader from '../../../components/Loader';
 
 const POKEMON_QUERY = gql`
   query Pokemon($id: ID!) {
@@ -68,7 +69,7 @@ const PokemonModal = () => {
           <div class="border-t md:border-t-0 md:border-l">
             <Show
               when={!query.loading && pokemon()}
-              fallback={<h2 class="font-medium text-3xl">Loading...</h2>}
+              fallback={<Loader class="opacity-5" />}
             >
               <div class="flex flex-col h-full relative p-8 gap-4">
                 <div class="flex items-start">
