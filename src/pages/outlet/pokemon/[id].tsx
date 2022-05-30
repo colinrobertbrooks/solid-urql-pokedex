@@ -1,9 +1,9 @@
 import { gql } from '@urql/core';
 import { Show } from 'solid-js';
 import { createQuery } from 'solid-urql';
-import Loader from '../../../components/Loader';
 import PokemonSprite from '../../../components/PokemonSprite';
 import { Link, useParams } from 'solid-app-router';
+import { scrollLock } from '../../../utils/scrollLock';
 
 // TODO: add fields
 const POKEMON_QUERY = gql`
@@ -17,7 +17,10 @@ const POKEMON_QUERY = gql`
 
 // TODO: focus trap
 const PokemonModal = () => {
+  scrollLock(() => true);
+
   const params = useParams();
+
   const [fetchedResult, fetchState] = createQuery({
     query: POKEMON_QUERY,
     variables: { id: params.id },
@@ -30,7 +33,7 @@ const PokemonModal = () => {
           <span class="font-light text-gray-400 text-xl">
             Pokémon #{params.id}
           </span>
-          <Link href="../../" aria-label="Close" class="w-4 h-4">
+          <Link href="../../" aria-label="Close" class="w-4 h-4" noScroll>
             <CloseIcon />
           </Link>
         </div>
@@ -45,20 +48,11 @@ const PokemonModal = () => {
             <div class="h-full relative p-6">
               <Show
                 when={!fetchState().fetching && fetchedResult()?.pokemon}
-                fallback={
-                  <div class="min-h-[200px]">
-                    <Loader size={80} />
-                  </div>
-                }
+                fallback={<h2 class="font-medium text-3xl">Loading...</h2>}
               >
-                <code class="break-words">
-                  <h2 class="font-medium text-3xl">
-                    {fetchedResult().pokemon.name}
-                  </h2>
-                  <h3 class="text-xl">
-                    {fetchedResult().pokemon.classification}
-                  </h3>
-                </code>
+                <h2 class="font-medium text-3xl">
+                  {fetchedResult().pokemon.name}
+                </h2>
               </Show>
             </div>
           </div>

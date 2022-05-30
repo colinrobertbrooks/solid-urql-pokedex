@@ -7,7 +7,11 @@ type PokemonCardProps = Pokemon;
 const PokemonCard = ({ ...pokemon }: PokemonCardProps) => {
   const { id, name } = pokemon;
   return (
-    <Link href={`/pokemon/${id}`} class="max-w-sm border shadow rounded-xl">
+    <Link
+      href={`/pokemon/${id}`}
+      class="max-w-sm border shadow rounded-xl"
+      noScroll
+    >
       <div class="p-4 border-b">
         <PokemonSprite alt={name} id={id} />
       </div>
