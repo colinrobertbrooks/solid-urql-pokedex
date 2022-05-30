@@ -9,7 +9,7 @@ const PokemonCard = ({ ...pokemon }: PokemonCardProps) => {
   return (
     <Link
       href={`/pokemon/${id}`}
-      class="max-w-sm border shadow rounded-xl"
+      class="max-w-sm border shadow rounded-xl text-gray-600"
       noScroll
     >
       <div class="p-4 border-b">

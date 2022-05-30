@@ -4,7 +4,7 @@ import { Router, useRoutes } from 'solid-app-router';
 import {
   createClient as createUrqlClient,
   Provider as UrqlProvider,
-} from 'solid-urql';
+} from './utils/solid-urql';
 
 import pages from './utils/pages.js';
 
