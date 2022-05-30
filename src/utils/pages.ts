@@ -25,18 +25,11 @@ Object.entries(pages).forEach(([path, file]) => {
     if (parent) {
       parent.children = parent.children || [];
       // If there is an outlet at the root level then we need
-      // to create a duplicate of itself as its own children
-      // in order for anything to actually render
-      if (parent.path === '/')
-        (parent.children as RouteDefinition[]).push({
-          path: '/',
-          component: lazy(
-            Object.entries(pages).find(
-              ([p]) => p === '../pages/index.tsx'
-            )![1] as () => Promise<{ default: Component<{}> }>
-          ),
-          data: data?.default,
-        });
+      // to nest the index route into itself
+      if (parent.path === '/') {
+        const { component, children, data, ...route } = parent;
+        (children as RouteDefinition[]).push(route);
+      }
       path = suffix;
       root = parent;
     }
