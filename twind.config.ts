@@ -10,7 +10,8 @@ export const config: Configuration = {
       overscroll-behavior-y: none;
     }
     body {
-      background: url(/src/assets/background.png) fixed;
+      background-image: radial-gradient(#fff, #fff3),
+        url(/src/assets/background.png);
     }
   `,
   theme: {

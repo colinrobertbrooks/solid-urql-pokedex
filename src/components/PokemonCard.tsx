@@ -9,7 +9,7 @@ const PokemonCard = ({ ...pokemon }: PokemonCardProps) => {
   return (
     <Link
       href={`/pokemon/${id}`}
-      class="max-w-sm border shadow-xl rounded-3xl text-gray-600 overflow-hidden bg-white"
+      class="max-w-sm shadow-xl rounded-3xl text-gray-600 overflow-hidden bg-white transition hover:scale-105 duration-200"
       noScroll
     >
       <div class="flex aspect-1-1.062">
