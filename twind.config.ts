@@ -9,6 +9,9 @@ export const config: Configuration = {
       font-size: clamp(14px, 2vmin, 18px);
       overscroll-behavior-y: none;
     }
+    body {
+      background: url(/src/assets/background.png) fixed;
+    }
   `,
   theme: {
     extend: {},
