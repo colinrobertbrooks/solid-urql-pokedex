@@ -12,7 +12,16 @@ const Navigation = () => (
       `
     )}
   >
-    <div class="mx-auto -mb-14 max-w-[62%]">
+    <div
+      class={tw(
+        'mx-auto -mb-14 max-w-[62%]',
+        css`
+          & svg {
+            filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+          }
+        `
+      )}
+    >
       <PokemonLogo />
     </div>
   </nav>
