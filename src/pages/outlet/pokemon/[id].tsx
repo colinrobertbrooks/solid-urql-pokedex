@@ -12,6 +12,7 @@ const POKEMON_QUERY = gql`
       id
       name
       classification
+      types
       maxHP
       weight {
         minimum
@@ -57,38 +58,38 @@ const PokemonModal = () => {
   };
 
   return (
-    <div class="flex fixed inset-0 p-5 bg-gray-600 bg-opacity-70 overflow-y-auto h-full w-full">
-      <div class="relative m-auto border w-full max-w-[50ch] md:max-w-screen-md shadow-2xl rounded-2xl bg-white">
-        <div class="flex items-center justify-between p-6 border-b">
-          <span class="font-light text-gray-400 text-xl">
-            Pokémon #{params.id}
-          </span>
-          <div class="flex gap-3 children:(w-8 h-8 p-1.5 border rounded-full text-gray-500 fill-current)">
-            <Show when={params.id !== '001'}>
-              <Link href={`../${incrementId(-1)}`} noScroll>
-                <PrevIcon />
-              </Link>
-            </Show>
-            <Show when={params.id !== '151'}>
-              <Link href={`../${incrementId(1)}`}>
-                <NextIcon />
-              </Link>
-            </Show>
-            <Link href="../../" aria-label="Close" noScroll>
-              <CloseIcon />
-            </Link>
-          </div>
-        </div>
+    <div class="flex fixed inset-0 px-5 py-8 bg-gray-600 bg-opacity-70 overflow-y-auto h-full w-full z-20">
+      <div class="relative m-auto w-full max-w-[50ch] md:max-w-screen-md shadow-2xl rounded-3xl overflow-hidden bg-white">
         <div class="grid md:grid-cols-2">
-          <div class="p-8 self-center">
+          <div class="flex w-full min-h-[33rem]">
             <PokemonSprite alt={pokemon()?.name || 'Pokémon'} id={params.id} />
           </div>
           <div class="border-t md:border-t-0 md:border-l">
+            <div class="w-full p-6 border-b flex items-center justify-between gap-3">
+              <h1 class="text-3xl font-extrabold text-gray-300">
+                #{params.id}
+              </h1>
+              <div class="flex gap-3 children:(w-8 h-8 p-1.5 border border-2 border-gray-300 rounded-full text-gray-400 fill-current)">
+                <Show when={params.id !== '001'}>
+                  <Link href={`../${incrementId(-1)}`} noScroll>
+                    <PrevIcon />
+                  </Link>
+                </Show>
+                <Show when={params.id !== '151'}>
+                  <Link href={`../${incrementId(1)}`}>
+                    <NextIcon />
+                  </Link>
+                </Show>
+                <Link href="../../" aria-label="Close" noScroll>
+                  <CloseIcon />
+                </Link>
+              </div>
+            </div>
             <Show when={pokemon()} fallback={<Loader class="opacity-5" />}>
               <div class="flex flex-col h-full relative p-8 gap-4">
                 <div class="flex items-start">
                   <div class="mr-auto">
-                    <h1 class="text-gray-700 font-bold text-2xl">
+                    <h1 class="text-gray-700 font-bold text-4xl">
                       {pokemon().name}
                     </h1>
                     <h2 class="text-gray-400 font-medium text-lg">
@@ -112,9 +113,9 @@ const PokemonModal = () => {
                   >
                     {({ name, type, damage }) => (
                       <div class="flex items-center gap-2 text-gray-600 p-1">
-                        <span class="mr-auto">{name}</span>
+                        <span class="text-lg mr-auto">{name}</span>
                         <span class="text-xs">{type}</span>
-                        <span class="font-bold">{damage}</span>
+                        <span class="text-lg font-bold">{damage}</span>
                       </div>
                     )}
                   </For>

@@ -13,4 +13,11 @@ export const config: Configuration = {
   theme: {
     extend: {},
   },
+  plugins: {
+    aspect: (parts) => css`
+      & {
+        aspect-ratio: ${parts[0]} / ${parts[1]};
+      }
+    `,
+  },
 };

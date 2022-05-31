@@ -6,9 +6,7 @@ const Root = () => {
   return (
     <>
       <Navigation />
-      <main class="mx-auto p-6 max-w-screen-2xl">
-        <PokemonList />
-      </main>
+      <PokemonList />
       <Outlet />
     </>
   );

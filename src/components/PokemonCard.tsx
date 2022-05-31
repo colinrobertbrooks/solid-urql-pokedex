@@ -9,10 +9,10 @@ const PokemonCard = ({ ...pokemon }: PokemonCardProps) => {
   return (
     <Link
       href={`/pokemon/${id}`}
-      class="max-w-sm border shadow rounded-xl text-gray-600"
+      class="max-w-sm border shadow-xl rounded-3xl text-gray-600 overflow-hidden"
       noScroll
     >
-      <div class="p-4 border-b">
+      <div class="flex aspect-1-1.062">
         <PokemonSprite alt={name} id={id} />
       </div>
       <div class="py-2 px-4 text-center">
