@@ -1,21 +1,27 @@
 import { tw } from 'twind/css';
 import ColorThief from 'colorthief/dist/color-thief.mjs';
-import { createSignal, onMount } from 'solid-js';
+import { createEffect, createSignal } from 'solid-js';
+
+const colorCache: Record<string, []> = {};
 
 const PokemonSprite = (props: { alt: string; id: string }) => {
-  let image;
+  let image: HTMLImageElement;
 
-  const [color, setColor] = createSignal([255, 255, 255]);
+  const [color, setColor] = createSignal([225, 225, 225]);
 
   const url = () =>
     `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${Number(
       props.id
     )}.png`;
 
-  onMount(() => {
+  createEffect(() => {
+    let cacheHit;
+    if ((cacheHit = colorCache[url()])) return setColor(cacheHit);
     const colorThief = new ColorThief();
     image?.addEventListener('load', function () {
-      setColor(colorThief.getColor(image));
+      const color = colorThief.getColor(image);
+      colorCache[url()] = color;
+      setColor(color);
     });
   });
 
