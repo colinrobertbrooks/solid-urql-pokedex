@@ -1,10 +1,10 @@
 import { gql } from '@urql/core';
-import { For, Show } from 'solid-js';
-import { createQuery, useClient } from '../../../utils/solid-urql';
-import PokemonSprite from '../../../components/PokemonSprite';
 import { Link, useParams } from 'solid-app-router';
-import { scrollLock } from '../../../utils/scrollLock';
+import { For, Show } from 'solid-js';
 import Loader from '../../../components/Loader';
+import PokemonSprite from '../../../components/PokemonSprite';
+import { scrollLock } from '../../../utils/scrollLock';
+import { createQuery, useClient } from '../../../utils/solid-urql';
 
 const POKEMON_QUERY = gql`
   query Pokemon($id: ID!) {
@@ -134,7 +134,7 @@ const CloseIcon = () => (
     <path
       fill-rule="evenodd"
       d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"
-    ></path>
+    />
   </svg>
 );
 
@@ -143,7 +143,7 @@ const NextIcon = () => (
     <path
       fill-rule="evenodd"
       d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"
-    ></path>
+    />
   </svg>
 );
 
@@ -152,7 +152,7 @@ const PrevIcon = () => (
     <path
       fill-rule="evenodd"
       d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"
-    ></path>
+    />
   </svg>
 );
 

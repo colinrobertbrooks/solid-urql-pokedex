@@ -1,6 +1,6 @@
-import { tw } from 'twind/css';
 import ColorThief from 'colorthief/dist/color-thief.mjs';
 import { createEffect, createSignal } from 'solid-js';
+import { tw } from 'twind/css';
 
 const colorCache: Record<string, []> = {};
 
@@ -33,10 +33,10 @@ const PokemonSprite = (props: { alt: string; id: string }) => {
     >
       <div
         class={`absolute inset-0 w-full h-full bg-gradient-to-t from-[rgba(${color().join()},0.8)] to-[rgba(${color().join()},0.2)]`}
-      ></div>
+      />
       <div
         class={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[150%] h-[42%] rounded-t-1/2 bg-gradient-to-t from-[rgba(${color().join()},1)] to-[rgba(${color().join()},0.3)]`}
-      ></div>
+      />
       <div class={tw('w-[80%] aspect-1-1')}>
         <img
           ref={image}
