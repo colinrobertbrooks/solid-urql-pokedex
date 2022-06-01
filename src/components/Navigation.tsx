@@ -1,8 +1,6 @@
 import { css, tw } from 'twind/css';
 import { PokemonLogo } from './PokemonLogo';
 
-// backdrop-filter: blur(10px);
-
 const Navigation = () => (
   <nav class={tw('sticky top-0 z-10 mb-6 flex')}>
     <svg
